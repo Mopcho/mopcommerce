@@ -1,14 +1,18 @@
+import { Hero } from "components/Hero/Hero";
 import { Navigation } from "components/Navigation/Navigation";
 import {BrowserRouter} from 'react-router-dom';
 
 
 function App() {
   return (
-    <div className="mx-10">
+ 
     <BrowserRouter>
-      <Navigation></Navigation>
+       <div className="container font-Poppins">
+        <Navigation/>
+        <Hero/>
+      </div>
     </BrowserRouter>
-    </div>
+
   );
 }
 
