@@ -7,7 +7,7 @@ function App() {
   return (
  
     <BrowserRouter>
-       <div className="font-Poppins">
+       <div className="font-Poppins bg-secondary">
         <Navigation/>
         <Hero/>
       </div>
