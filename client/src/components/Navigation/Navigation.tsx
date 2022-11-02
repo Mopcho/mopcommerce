@@ -5,7 +5,7 @@ export const Navigation: FC = () => {
     return (
         <header className="container">
         <nav className="flex items-center py-4 text-third">
-            <div className="py-4"><NavLink to="/" className="text-2xl">&lt; Tea and Code /&gt;</NavLink></div>
+            <div className="py-4"><NavLink to="/" className="text-2xl">&lt; Chaika /&gt;</NavLink></div>
            <ul className="hidden sm:flex justify-end flex-1 items-center gap-12 uppercase text-md">
                 <NavLink to="/Shop" className="hover:font-medium hover:scale-125">Shop</NavLink>
                 <NavLink to="/Cart" className="hover:font-medium hover:scale-125">Cart</NavLink>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const Hero: FC = () => {
     return (
-        <main className="container flex justify-between py-11 text-third flex-col sm:flex-row items-center">
+        <section className="container flex justify-between py-11 text-third flex-col sm:flex-row items-center">
             <div className="flex flex-col justify-evenly flex-1 w-full sm:w-3/6 items-center sm:items-start gap-5">
                 <div className="text-center sm:text-left">
                     <h1 className="text-3xl py-4 leading-10">Tea and Code offers a wide varitety of teas that reduce the bugs you create by up to 80% !</h1>
@@ -14,6 +14,6 @@ export const Hero: FC = () => {
             <div className="w-3/6">
                 <img src={require('./hero-image.jpg')} alt="hero" className="mix-blend-multiply"></img>
             </div>
-        </main>
+        </section>
     )
 }
