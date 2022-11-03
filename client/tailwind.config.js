@@ -10,9 +10,6 @@ module.exports = {
 				fourth: '#703f37',
 				fifth: '#b6c199',
 			},
-			screens: {
-				xsm: '400px',
-			},
 		},
 		fontFamily: {
 			Poppins: ['Poppins, sans-serif'],
