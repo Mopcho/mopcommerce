@@ -3,8 +3,8 @@ import { NavLink } from "react-router-dom";
 
 export const CategoriesSideBar: FC = () => {
     return (
-        <aside className="border-2 w-1/4 h-max">
-               <ul className="flex flex-col gap-3 justify-start">
+        <aside className="border-2 sm:w-1/4 h-max w-full">
+               <ul className="flex gap-3 justify-start sm:flex-col flex-row">
                     {/* TODO : Those need to be fetched /categories */}
                     <li>
                         <NavLink to="/shop/black" className="hover:font-bold hover:text-main py-4 block w-full text-center" style={({isActive}) => 
