@@ -22,6 +22,7 @@ model Users {
 model Items {
   id    String @id @unique @db.Uuid
   title String
+  price Int
 
   @@map("items")
 }
