@@ -6,6 +6,7 @@ import session from 'express-session';
 import { sessionSecret } from './config/constants';
 import { PrismaSessionStore } from '@quixo3/prisma-session-store';
 import { PrismaClient } from '@prisma/client';
+import passport from 'passport';
 
 const prisma = new PrismaClient();
 dotenv.config();
@@ -42,6 +43,9 @@ app.use(
 		},
 	})
 );
+require('./config/passport/passport');
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(router);
 
