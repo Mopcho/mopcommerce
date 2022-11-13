@@ -11,18 +11,32 @@ datasource db {
 }
 
 model Users {
-  id       String @id @unique @db.Uuid
-  username String
+  id       String @id @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username String @default("Annonymous")
   email    String @unique
+  age      Int
   password String
+
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 
   @@map("users")
 }
 
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String
+  expiresAt DateTime
+}
+
 model Items {
-  id    String @id @unique @db.Uuid
+  id    String @id @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   title String
   price Int
+
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 
   @@map("items")
 }
