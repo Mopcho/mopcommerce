@@ -15,13 +15,6 @@ const port = process.env.PORT || '3030';
 
 const app = express();
 
-// TODO : Find a way to move this into a .d.ts file instead of declaring it here
-declare module 'express-session' {
-	interface SessionData {
-		views: number;
-	}
-}
-
 // Cors
 app.use(cors());
 

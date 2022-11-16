@@ -1,5 +1,5 @@
 import passport from 'passport';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Users } from '@prisma/client';
 import {
 	IStrategyOptions,
 	Strategy as LocalStrategy,
@@ -10,6 +10,7 @@ import { saltRounds } from '../constants';
 
 const prisma = new PrismaClient();
 
+// TODO : Find a way to move this into a .d.ts file instead of declaring it here
 const customFields: IStrategyOptions = {
 	usernameField: 'email',
 	passwordField: 'password',
@@ -45,13 +46,13 @@ const strategy = new LocalStrategy(customFields, verifyCallback);
 
 passport.use(strategy);
 
-passport.serializeUser((user: { id?: string }, done) => {
+passport.serializeUser((user, done) => {
 	done(null, user.id);
 });
 
 passport.deserializeUser((userId: string, done) => {
 	prisma.users
-		.findUniqueOrThrow({ where: { id: userId } })
+		.findUniqueOrThrow({ where: { id: userId }, include: { Roles: true } })
 		.then((user) => {
 			done(null, user);
 		})

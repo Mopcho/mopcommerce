@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import { logout, register } from '../controllers/authController';
-import { isAuth } from '../middlewares/authMiddleware';
+import { isAuth, roleGuard } from '../middlewares/authMiddleware';
 
 const router = express.Router();
 
@@ -14,6 +14,10 @@ router.post(
 );
 
 router.get('/protected', isAuth, (req, res) => {
+	res.send('Protected data');
+});
+
+router.get('/admin', isAuth, roleGuard(['Admin']), (req, res) => {
 	res.send('Protected data');
 });
 

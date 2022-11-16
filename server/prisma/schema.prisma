@@ -11,16 +11,29 @@ datasource db {
 }
 
 model Users {
-  id       String @id @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  username String @default("Annonymous")
-  email    String @unique
+  id       String  @id @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  username String  @default("Annonymous")
+  email    String  @unique
   age      Int
   password String
+  Roles    Roles[]
 
   updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(3)
   createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
 
   @@map("users")
+}
+
+model Roles {
+  id     String   @id @unique @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title  String   @unique
+  scopes String[]
+
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(3)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(3)
+  Users     Users[]
+
+  @@map("roles")
 }
 
 model Session {
